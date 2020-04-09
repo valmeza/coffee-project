@@ -76,13 +76,19 @@ var coffees = [
   { id: 14, name: "French", roast: "dark" }
 ];
 
+// Add New Coffee
+
+function addNewCoffee(input) {}
+
 //query selectors
 var tbody = document.querySelector("#coffees");
-// var submitButton = document.querySelector("#submit"); this is currently not useful yet
 var roastSelection = document.querySelector("#roast-selection");
+var addNewCoffee = document.querySelector("#new-coffee-btn");
+// var submitButton = document.querySelector("#submit"); this is currently not useful yet
 
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
 roastSelection.addEventListener("change", updateCoffees);
+addNewCoffee.addEventListener("click", addNewCoffee); // when user clicks should push new item to the array
 // submitButton.addEventListener("click", filterCoffees); not useful yet;

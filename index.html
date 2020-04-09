@@ -10,6 +10,7 @@
     ></script>
   </head>
   <body>
+    <!-- Main Header -->
     <div class="main-header">
       <h1>Coffee! <i class="fas fa-mug-hot"></i></h1>
     </div>
@@ -36,16 +37,20 @@
       <!-- <button id="submit" type="submit">Submit</button> -->
       <!-- button commented out for now until theres actual functionality for it. -->
     </form>
+
     <!-- Add a coffee -->
-    <label for="new-coffee"></label>
-    <input
-      id="new-coffee"
-      type="text"
-      name="new-coffee"
-      placeholder="Add Coffee"
-      onkeyup="newCoffee()"
-    />
-    <button id="new-coffee-btn" type="submit">Add Coffee</button>
+    <form>
+      <label for="new-coffee"></label>
+      <input
+        id="new-coffee"
+        type="text"
+        name="new-coffee"
+        placeholder="Add Coffee"
+        onkeyup="newCoffee()"
+      />
+      <button id="new-coffee-btn" type="submit">Add Coffee</button>
+    </form>
+
     <!--  Coffee list  -->
     <div id="coffees"></div>
 
