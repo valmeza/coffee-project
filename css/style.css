@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+}
+body {
+  background-image: url("https://images.pexels.com/photos/272887/pexels-photo-272887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color: #f1f1f1;
+}
+
+/* Font Colors */
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: grey;
+}
+
+.main-header {
+  padding: 25px;
+  background-color: #006341;
+  color: var(--primary-color);
+}
+form {
+  margin: 10px 0 30px 10px;
+}
+
+select {
+  width: 10%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+input[type="search"],
+input[type="text"] {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+input[type="text"]:focus,
+input[type="search"]:focus {
+  background-color: #b0d3cd;
+  border: 2px solid #006341;
+}
+button {
+  background-color: #006341;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+  text-align: center;
+}
+
+#coffees {
+  height: 50%;
+  width: 30%;
+  margin: 10px;
+}
+
+.coffee-content {
+  background-color: #f1f1f1;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 30px;
+}
+.coffee-content:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+p {
+  color: var(--secondary-color);
+}
+p::after {
+  content: " \2615";
+}

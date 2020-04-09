@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coffee Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/6a3a6a39bd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main-header">
+      <h1>Coffee! <i class="fas fa-mug-hot"></i></h1>
+    </div>
+
+    <!-- Roast Dropdown-->
+    <form>
+      <label for="roast-selection"></label>
+      <select id="roast-selection">
+        <option>all</option>
+        <option>light</option>
+        <option>medium</option>
+        <option>dark</option>
+      </select>
+
+      <!-- Coffee Search -->
+      <label for="search"></label>
+      <input
+        id="search"
+        type="search"
+        name="search"
+        placeholder="Coffee Search"
+        onkeyup="filterCoffees()"
+      />
+      <button id="submit" type="submit">Submit</button>
+    </form>
+    <!-- Add a coffee -->
+    <label for="new-coffee"></label>
+    <input
+      id="new-coffee"
+      type="text"
+      name="new-coffee"
+      placeholder="Add Coffee"
+      onkeyup="newCoffee()"
+    />
+    <button id="new-coffee-btn" type="submit">Add Coffee</button>
+    <!--  Coffee list  -->
+    <div id="coffees"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
