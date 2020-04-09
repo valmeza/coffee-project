@@ -78,11 +78,11 @@ var coffees = [
 
 //query selectors
 var tbody = document.querySelector("#coffees");
-var submitButton = document.querySelector("#submit");
+// var submitButton = document.querySelector("#submit"); this is currently not useful yet
 var roastSelection = document.querySelector("#roast-selection");
 
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
 roastSelection.addEventListener("change", updateCoffees);
-submitButton.addEventListener("click", filterCoffees);
+// submitButton.addEventListener("click", filterCoffees); not useful yet;
