@@ -11,6 +11,7 @@ function renderCoffee(coffee) {
   return html;
 }
 
+// renders coffees in ascending order usind the id's;
 function renderCoffees(coffees) {
   var html = "";
   for (var i = coffees.length - 1; i >= 0; i--) {
@@ -77,8 +78,11 @@ var coffees = [
 ];
 
 // Add New Coffee
-
-function addNewCoffee(input) {}
+function addNewCoffee(input) {
+  for (var i = 0; i < coffees.length; i++) {
+    // unshift will add a new item to the beginning of the array
+  }
+}
 
 //query selectors
 var tbody = document.querySelector("#coffees");
