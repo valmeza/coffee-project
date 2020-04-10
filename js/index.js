@@ -58,8 +58,16 @@ function updateCoffees(e) {
   tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+// Add New Coffee
+function addNewCoffee(input) {
+  for (var i = 0; i < coffees.length; i++) {
+    // unshift will add a new item to the beginning of the array
+  }
+}
+
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 
+// coffee list;
 var coffees = [
   { id: 1, name: "Light City", roast: "light" },
   { id: 2, name: "Half City", roast: "light" },
@@ -76,13 +84,6 @@ var coffees = [
   { id: 13, name: "Italian", roast: "dark" },
   { id: 14, name: "French", roast: "dark" }
 ];
-
-// Add New Coffee
-function addNewCoffee(input) {
-  for (var i = 0; i < coffees.length; i++) {
-    // unshift will add a new item to the beginning of the array
-  }
-}
 
 //query selectors
 var tbody = document.querySelector("#coffees");
