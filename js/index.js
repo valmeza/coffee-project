@@ -59,16 +59,16 @@ function updateCoffees(e) {
 }
 
 // Add New Coffee
-function addNewCoffee(input) {
-  for (var i = 0; i < coffees.length; i++) {
-    // unshift will add a new item to the beginning of the array
-    if (typeof Storage !== "undefined") {
-      console.log("Code for localStorage/sessionStorage.");
-    } else {
-      console.log("Sorry! No Web Storage support..");
-    }
+// this should add the new coffee to the new array and not delete it when the page reloads.
+function addNewCoffee() {
+  if (localStorage.getItem("coffees") !== "undefined" || null) {
+    var addCoffee = JSON.parse(localStorage.getItem("coffee"));
+    tbody.innerHTML = renderCoffees(addCoffee);
+  } else {
+    tbody.innerHTML = renderCoffees(coffees);
   }
 }
+addNewCoffee();
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 
