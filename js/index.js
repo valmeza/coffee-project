@@ -62,6 +62,11 @@ function updateCoffees(e) {
 function addNewCoffee(input) {
   for (var i = 0; i < coffees.length; i++) {
     // unshift will add a new item to the beginning of the array
+    if (typeof Storage !== "undefined") {
+      console.log("Code for localStorage/sessionStorage.");
+    } else {
+      console.log("Sorry! No Web Storage support..");
+    }
   }
 }
 
