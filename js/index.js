@@ -61,15 +61,39 @@ function updateCoffees(e) {
 // Add New Coffee
 // this should add the new coffee to the new array and not delete it when the page reloads.
 function addNewCoffee() {
-  if (localStorage.getItem("coffees") !== "undefined" || null) {
-    var addCoffee = JSON.parse(localStorage.getItem("coffee"));
+  if (localStorage.getItem("coffees") !== null || "undefined") {
+    var addCoffee = JSON.parse(localStorage.getItem("coffees"));
     tbody.innerHTML = renderCoffees(addCoffee);
   } else {
     tbody.innerHTML = renderCoffees(coffees);
   }
 }
-addNewCoffee();
+// addNewCoffee();
+document
+  .getElementById("new-coffee")
+  .addEventListener("click", function(event) {
+    var addNewRoastSelect = document.getElementById(
+      "roast-selection-add-newCoffee"
+    ).value;
+    var addNewCoffeeText = document.getElementById("new-coffee").value;
+    var addCoffeeList = coffees;
 
+    if (localStorage.getItem("coffees") !== null || "undefined") {
+      addCoffeeList = JSON.parse(localStorage.getItem("coffees"));
+    }
+
+    addCoffeeList.push({
+      id: coffees.length + 1,
+      name: addNewCoffee,
+      roast: addNewRoastSelect
+    });
+
+    var stringCoffees = JSON.stringify(addCoffeeList);
+
+    localStorage.setItem("coffees", stringCoffees);
+
+    addNewCoffee();
+  });
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 
 // coffee list;
