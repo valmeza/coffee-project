@@ -55,45 +55,11 @@ function updateCoffees(e) {
       filteredCoffees.push(coffee);
     }
   });
+
   tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-// Add New Coffee
-// this should add the new coffee to the new array and not delete it when the page reloads.
-function addNewCoffee() {
-  if (localStorage.getItem("coffees") !== null || "undefined") {
-    var addCoffee = JSON.parse(localStorage.getItem("coffees"));
-    tbody.innerHTML = renderCoffees(addCoffee);
-  } else {
-    tbody.innerHTML = renderCoffees(coffees);
-  }
-}
-// addNewCoffee();
-document
-  .getElementById("new-coffee")
-  .addEventListener("click", function(event) {
-    var addNewRoastSelect = document.getElementById(
-      "roast-selection-add-newCoffee"
-    ).value;
-    var addNewCoffeeText = document.getElementById("new-coffee").value;
-    var addCoffeeList = coffees;
 
-    if (localStorage.getItem("coffees") !== null || "undefined") {
-      addCoffeeList = JSON.parse(localStorage.getItem("coffees"));
-    }
-
-    addCoffeeList.push({
-      id: coffees.length + 1,
-      name: addNewCoffee,
-      roast: addNewRoastSelect
-    });
-
-    var stringCoffees = JSON.stringify(addCoffeeList);
-
-    localStorage.setItem("coffees", stringCoffees);
-
-    addNewCoffee();
-  });
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 
 // coffee list;
@@ -118,11 +84,41 @@ var coffees = [
 var tbody = document.querySelector("#coffees");
 var roastSelection = document.querySelector("#roast-selection");
 var addNewCoffee = document.querySelector("#new-coffee-btn");
-// var submitButton = document.querySelector("#submit"); this is currently not useful yet
 
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
 roastSelection.addEventListener("change", updateCoffees);
-addNewCoffee.addEventListener("click", addNewCoffee); // when user clicks should push new item to the array
-// submitButton.addEventListener("click", filterCoffees); not useful yet;
+
+function coffeeLocalStorage() {
+  var coffee;
+  if(localStorage.getItem("coffees") !== null) {
+    coffee = JSON.parse(localStorage.getItem("coffees"));
+    tbody.innerHTML = renderCoffees(coffee)
+  } else {
+    tbody.innerHTML = renderCoffees(coffees);
+  }
+}
+coffeeLocalStorage();
+
+addNewCoffee.addEventListener("click", function(e) {
+  e.preventDefault;
+  
+  var newRoast = document.getElementById("roast-selection-add-newCoffee").value;
+  var newCoffee = document.getElementById("new-coffee").value;
+
+  var coffeeList = coffees;
+
+  if(localStorage.getItem("coffees") !== null) {
+    coffeeList = JSON.parse(localStorage.getItem("coffees"));
+  }
+
+  coffeeList.push({id: coffees.length + 1, name: newCoffee, roast: newRoast});
+
+  var coffeeToString = JSON.stringify(coffeeList);
+
+  localStorage.setItem("coffees", coffeeToString);
+  
+  coffeeLocalStorage();
+});
+
