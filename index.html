@@ -41,12 +41,18 @@
     <!-- Add a coffee -->
     <form>
       <label for="new-coffee"></label>
+      <label for="roast-selection-add-newCoffee"></label>
+      <select id="roast-selection-add-newCoffee">
+        <option>all</option>
+        <option>light</option>
+        <option>medium</option>
+        <option>dark</option>
+      </select>
       <input
         id="new-coffee"
         type="text"
         name="new-coffee"
         placeholder="Add Coffee"
-        onkeyup="newCoffee()"
       />
       <button id="new-coffee-btn" type="submit">Add Coffee</button>
     </form>

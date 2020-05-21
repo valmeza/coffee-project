@@ -11,6 +11,7 @@ function renderCoffee(coffee) {
   return html;
 }
 
+// renders coffees in ascending order usind the id's;
 function renderCoffees(coffees) {
   var html = "";
   for (var i = coffees.length - 1; i >= 0; i--) {
@@ -54,11 +55,14 @@ function updateCoffees(e) {
       filteredCoffees.push(coffee);
     }
   });
+
   tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 
+// coffee list;
 var coffees = [
   { id: 1, name: "Light City", roast: "light" },
   { id: 2, name: "Half City", roast: "light" },
@@ -76,19 +80,45 @@ var coffees = [
   { id: 14, name: "French", roast: "dark" }
 ];
 
-// Add New Coffee
-
-function addNewCoffee(input) {}
-
 //query selectors
 var tbody = document.querySelector("#coffees");
 var roastSelection = document.querySelector("#roast-selection");
 var addNewCoffee = document.querySelector("#new-coffee-btn");
-// var submitButton = document.querySelector("#submit"); this is currently not useful yet
 
 tbody.innerHTML = renderCoffees(coffees);
 
 // Event Listeners
 roastSelection.addEventListener("change", updateCoffees);
-addNewCoffee.addEventListener("click", addNewCoffee); // when user clicks should push new item to the array
-// submitButton.addEventListener("click", filterCoffees); not useful yet;
+
+function coffeeLocalStorage() {
+  var coffee;
+  if(localStorage.getItem("coffees") !== null) {
+    coffee = JSON.parse(localStorage.getItem("coffees"));
+    tbody.innerHTML = renderCoffees(coffee)
+  } else {
+    tbody.innerHTML = renderCoffees(coffees);
+  }
+}
+coffeeLocalStorage();
+
+addNewCoffee.addEventListener("click", function(e) {
+  e.preventDefault;
+  
+  var newRoast = document.getElementById("roast-selection-add-newCoffee").value;
+  var newCoffee = document.getElementById("new-coffee").value;
+
+  var coffeeList = coffees;
+
+  if(localStorage.getItem("coffees") !== null) {
+    coffeeList = JSON.parse(localStorage.getItem("coffees"));
+  }
+
+  coffeeList.push({id: coffees.length + 1, name: newCoffee, roast: newRoast});
+
+  var coffeeToString = JSON.stringify(coffeeList);
+
+  localStorage.setItem("coffees", coffeeToString);
+  
+  coffeeLocalStorage();
+});
+
