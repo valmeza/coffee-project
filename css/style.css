@@ -57,7 +57,11 @@ h1 {
 }
 
 #coffees {
-  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.coffee {
   width: 30%;
   margin: 10px;
 }
